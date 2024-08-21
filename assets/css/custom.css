@@ -1,0 +1,83 @@
+body {
+    background-color: white;
+    line-height: 1.6em;
+}
+
+code {
+    background-color: #f1f1f1;
+}
+
+h1 {
+    margin: 4rem 0 1.5rem 0;
+}
+
+.post #TableOfContents a {
+    color: #3546E5;
+}
+
+.post #TableOfContents ul {
+    list-style: none;
+}
+
+.post h2 {
+    font-size: 3.2rem;
+}
+
+.post h3 {
+    margin: 0rem 0 2.5rem 0;
+    font-size: 2.4rem;
+}
+
+.posted-on {
+    color: #A9A7A7;
+    font-weight: 500;
+}
+
+.content .post .post-meta .tags .tag {
+    background-color: white;
+}
+
+.content .post .post-meta .tags .tag a {
+    color: #3546E5;
+    font-weight: 300;
+}
+
+.tags {
+    color: #3546E5;
+}
+
+.taxonomy .date {
+    color: rgb(124, 124, 124);
+}
+
+.taxonomy > h2 {
+    margin: 0rem 0 0rem 0;
+}
+
+.about > h2 > a {
+    color: black;
+}
+
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .left-column {
+    flex: 1;
+    margin-right: 20px; /* Adjust as needed for spacing between columns */
+  }
+  
+  .right-column {
+    flex: 1;
+  }
+  
+
+  .post hr {
+    color: #fefefe;
+  }
+

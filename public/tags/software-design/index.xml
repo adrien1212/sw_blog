@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Design on johndoe</title>
+    <link>http://localhost:1313/tags/software-design/</link>
+    <description>Recent content in Software Design on johndoe</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Minimal Service Layer</title>
+      <link>http://localhost:1313/posts/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/test/</guid>
+      <description>The problem Link to heading Different people or system need to perform the same operation&#xA;En tant qu&amp;rsquo;utilisateur Je ne peux accéder qu&amp;rsquo;à mes commande&#xA;En tant qu&amp;rsquo;administrateur Je peux accéder aux commande des utilisateurs&#xA;En tant que microservice annexe Je peux accéder aux commande des utilisateurs&#xA;The simplest solution is to design the Service as accountable to manage the authentication and authorization. in other word, the authenticated user can access only and only to these informations.</description>
+    </item>
+  </channel>
+</rss>

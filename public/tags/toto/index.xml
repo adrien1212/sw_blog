@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Toto on Adrien CAUBEL</title>
+    <link>http://localhost:1313/tags/toto/</link>
+    <description>Recent content in Toto on Adrien CAUBEL</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/toto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Minimal Service Layer Pattern</title>
+      <link>http://localhost:1313/posts/minimal_service_layer_pattern/</link>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/minimal_service_layer_pattern/</guid>
+      <description>Problem Link to heading Different people or system need to perform the same operation, and defining an high-impact Service Layer could reduce the reach of requirement. A high-impact Service Layer goes beyond just handling business logic such as filtering authentication and authorization.&#xA;Consider the following User Stories&#xA;As a user I want to access to my order (So that I can track my purchase and stay informed about its status)</description>
+    </item>
+  </channel>
+</rss>
