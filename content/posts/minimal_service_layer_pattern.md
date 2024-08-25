@@ -1,7 +1,7 @@
 +++
 title = "The Minimal Service Layer Pattern"
 series = ["Design Layered Architecture"]
-date = "2023-07-06"
+date = "2023-08-20"
 +++
 
 ## Problem

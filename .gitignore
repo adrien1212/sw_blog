@@ -1,0 +1,9 @@
+/public/
+/resources/_gen/
+
+/resources/
+
+.DS_Store
+node_modules
+dist
+tmp
