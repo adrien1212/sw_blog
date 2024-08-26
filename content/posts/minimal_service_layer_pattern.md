@@ -69,7 +69,7 @@ public List<Order> getUserOrders(Long userId) {
 }
 ```
 
-## Delegate to another Service 
+### Delegate to another Service 
 According the [this amazing article](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/#application-layer)
 > Bounded contexts like Authorization and/or Authentication should be seen as external tools for which we create an adapter and hide behind some kind of port.
 
