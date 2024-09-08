@@ -1,6 +1,7 @@
 +++
 title = "Retrieve User Information in Spring Security"
 series = ["Spring Security"]
+weight = 20
 date = "2023-08-31"
 +++
 

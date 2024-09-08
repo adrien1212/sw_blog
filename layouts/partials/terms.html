@@ -1,4 +1,6 @@
-<section class="container taxonomy">
+<!-- The list of Series/Tags/... -->
+
+<section class="container taxymonie">
     <header>
       <h1 class="title">
         <a class="title-link" href="{{ .Permalink | safeURL }}">
@@ -21,7 +23,6 @@
       <ul>
         {{ range .Paginator.Pages }}
         <li>
-          <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
           <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
         </li>
         {{ end }}
