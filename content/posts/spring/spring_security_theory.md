@@ -2,7 +2,7 @@
 title = "Spring Security Theory"
 series = ["Spring Security"]
 weight = 10
-date = "2023-09-04"
+date = "2024-09-04"
 +++
 
 While Spring Security is a powerful framework for securing Java applications, it can be challenging to grasp and implement effectively. Perhaps the most significant hurdle for developers is the lack of a clear understanding of its fundamental concepts and core principles. In this article we will not code, I just show you of Spring Security works through diagrams.

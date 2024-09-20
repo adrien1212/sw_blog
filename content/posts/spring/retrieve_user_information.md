@@ -2,7 +2,7 @@
 title = "Retrieve User Information in Spring Security"
 series = ["Spring Security"]
 weight = 20
-date = "2023-08-31"
+date = "2024-08-31"
 +++
 
 Spring Security provides several ways to retrieve information about the authenticated user. Let's explore how Spring Security stores authenticated user details and the methods to access this information.

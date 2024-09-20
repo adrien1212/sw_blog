@@ -2,7 +2,7 @@
 title = "Spring Security Minimum"
 series = ["Spring Security"]
 weight = 15
-date = "2023-09-11"
+date = "2024-09-11"
 +++
 This article and the following code represent the minimal configuration to add security in your Spring application. We will use the latest article [Spring Security Theory](../spring_security_theory) where we have described the Spring Security Architecture with these main component : Security Filter Chain, AuthenticationManager, AuthenticationProvider and the Security Context Holder. It is therefore important to read this last article in order to understand the following code.
 

@@ -1,7 +1,7 @@
 +++
 title = "Low coupling and High cohesion"
 series = ["Design Practices"]
-date = "2023-08-25"
+date = "2024-08-25"
 +++
 
 In order to prolong the value of the software for a long period of time you have to make it respond easier to change. The good thing is that there are a few guidelines that you can follow that can help you out.
