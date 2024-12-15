@@ -65,19 +65,23 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  
-  .left-column {
+}
+
+.left-column {
     flex: 1;
     margin-right: 20px; /* Adjust as needed for spacing between columns */
-  }
-  
-  .right-column {
+}
+
+.right-column {
     flex: 1;
-  }
-  
+}
 
-  .post hr {
+
+.post hr {
     color: #fefefe;
-  }
+}
 
+
+th, td {
+    padding: 0.5rem;
+}

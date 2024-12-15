@@ -135,4 +135,5 @@ Decoupled modules, with their well-defined boundaries and interfaces, are inhere
 - https://martinfowler.com/bliki/TellDontAsk.html
 - https://martinfowler.com/bliki/AnemicDomainModel.html
 - https://www.kamilgrzybek.com/blog/posts/modular-monolith-primer
+
 - [Low Coupling and High Cohesion](../low_coupling_high_cohesion)
