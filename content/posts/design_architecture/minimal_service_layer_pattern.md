@@ -98,3 +98,6 @@ I called it "The Minimal Service Layer Pattern" because the Service Layer only k
 > It encapsulates the application's business logic, controlling transactions and coor-dinating responses in the implementation of its operations - [Martin Fowler](https://martinfowler.com/eaaCatalog/serviceLayer.html)
 
 And delegates all the superfluous stuff
+
+## Further reading
+- [Authorization: Domain or Application Layer?](https://www.youtube.com/watch?v=0TpejBzN-xw)
