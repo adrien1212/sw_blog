@@ -4,8 +4,12 @@ series = ["Domain Driven Design"]
 date = "2025-05-07"
 +++
 
+<!-- 
+Amélioration à faire, en faire un autre article ?
+https://claude.ai/share/64893062-f68a-4cdf-9330-6ac4a933ba1a -->
+
 ## Application to build
-In the following article we want to build an Order application
+In the following article you will learn how to avoid building [Anemic Domain Model](https://martinfowler.com/bliki/AnemicDomainModel.html) and [Transaction Script](https://martinfowler.com/eaaCatalog/transactionScript.html) code when you have business logic in your application. We have
 - `Order` has several `OrderLine`
 - Each `OrderLine` contains the `Article` and the quantity bought
 - Apply a discount if the client is good
@@ -19,10 +23,7 @@ And we want to create a new Order through endpoint API `POST /orders`
       "articleId": 1,
       "quantity": 2
     },
-    {
-      "articleId": 2,
-      "quantity": 4
-    }
+    ...
   ]
 }
 ```
@@ -180,9 +181,10 @@ public void deleteLineOrder(Long orderId, Long lineOrderId) {
 }
 ```
 
-No change is needed in your repositories unless you're persisting LineOrder separately. In typical aggregate design, it's embedded and saved via Order.
+No change is needed in your repositories unless you're persisting LineOrder separately. In typical aggregate design, it's embedded and saved via `Order`.
+Like `Order` is the aggregate root we have to go through it to modify the order (add or remove line).
 
-### Domain Logic in Aggregate Root
+### Domain Logic in Aggregate Root (Order class)
 Add this method in your Order class
 ```java
 public class Order {
@@ -217,6 +219,8 @@ public class Mvt {
 ```
 
 ### Application Service (createOrder + Mvt tracking)
+The Application Service Layer orchestrate the business logic
+
 ```java
 @Transactional
 public Long createOrder(CreateOrderRequest request) {
@@ -315,6 +319,8 @@ public Long createOrder(CreateOrderRequest request) {
     return order.getId();
 }
 ```
+
+We could also raise the event in the Domain, in the `addLineOrder()` method 
 
 #### Event Listeners
 ```java
