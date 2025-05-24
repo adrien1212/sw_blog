@@ -25,6 +25,22 @@ Pour illustrer mes proposer regardons l'application suivante https://github.com/
   - Mettre à jour le total de la commande
   - persister la commande
 
+```json
+{
+  "customerId": 1,
+  "items": [
+    {
+      "articleId": 1,
+      "quantity": 2
+    },
+    {
+      "articleId": 1,
+      "quantity": 1
+    }
+  ]
+}
+```
+
 ```java
 @Service
 public class OrderService {
@@ -133,6 +149,8 @@ Essayons de redonner à nos entité de la logique métier et regardons comment c
 ### Logique métier dans Order
 Nous allons recoder la classe `Order` pour qu'elle contienne de la logique métier 
 ```java
+@Entity
+@Table(name = "orders")
 public class Order {
     public void addItem(Article article, int quantity, boolean isVip) {
         if (article == null) {
@@ -195,6 +213,10 @@ On remarque que :
 - la méthode `placeOrder()` est plus courte
 - car elle ne contient plus la logique métier associé à la création d'une commande et l'ajout d'une ligne à une commande
 
+Question :
+- Pourquoi la méthode `addItem()` n'est pas `addItem(OrderItem orderItem)` ?
+  - Dans DDD, Order est la Aggregate Root c'est elle qui doit contrôler la création et le cycle de vie de ses OrderItems.
+  - Cette approche permet de s'assurer des invariant
 
 ### Écriture d'un test unitaire
 Si on passe le test unitaire précédent, il fonctionne toujours mais nous allons le modifier pour ne tester que la méthode `addItem()`. Plus besoin de mock car le domaine métier ne dépend de rien !
@@ -208,7 +230,7 @@ void addItem_shouldCalculateTotal() {
 
     Order order = new Order();
 
-    order.addItem(article, 2, false); // Client VIP
+    order.addItem(article, 2, false); // Client not VIP
 
     BigDecimal expectedLineTotal = new BigDecimal("100").multiply(BigDecimal.valueOf(2));
     assertEquals(expectedLineTotal, order.getTotal());
@@ -219,7 +241,7 @@ void addItem_shouldCalculateTotal() {
 
 Mais vous allez dire, que là nous testons uniquement la classe `Order` sans vérifier l'ensemble (OrderService) est notamment que fait que l'inventaire soit mis à jour !
 
-avec ce modèle DDD, les tests sur la classe Order ne couvrent que la logique métier interne à l’entité (calcul du total, gestion des articles…).
+Avec ce modèle DDD, les tests sur la classe Order ne couvrent que la logique métier interne à l’entité (calcul du total, gestion des articles…).
 Ils ne testent pas l’orchestration globale, notamment :
 - L’appel à l’inventaire et la mise à jour du stock
 - La récupération des articles/clients
@@ -288,6 +310,7 @@ Le test unitaire du service ne vérifie que l'orchestration
 On peut également faire la même chose pour la mise à jour du stock dans l'inventaire
 
 ```java
+@Entity
 class Inventory {
     public void decreaseStock(int quantity) {
         if (quantity <= 0) {
