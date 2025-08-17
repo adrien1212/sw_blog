@@ -161,7 +161,7 @@ public class McpConfig {
 }
 ```
 
-### Lancement
+### Running the app
 Once we start the application, we should see the log indicating how many tools were registered in the MCP server.
 ```
 o.s.a.a.m.s.MpcServerAutoConfiguration   : Registered tools: 5 notification: true
@@ -261,7 +261,7 @@ public class ToolRequest {
 }
 ```
 
-## Query example
+## Examples
 ### Simple exemple
 Know we can perform following action
 ```
