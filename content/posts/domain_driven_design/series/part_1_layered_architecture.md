@@ -4,6 +4,8 @@ series = ["Domain Driven Design"]
 date = "2025-05-18"
 +++
 
+> Video YouTube [https://youtu.be/TvGvn-9IPrg](DDD et Anemic Domain Model : créer une couche service maintenable)
+
 Dans cet série d'article nous allons voir comment refactor une Architecture en Couche :
 1. Partir d'une architecture classique en couche technique
 2. Montrer qu'il est compliqué d'écrire un test unitaire
