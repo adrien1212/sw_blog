@@ -4,7 +4,7 @@ series = ["MCP, Spring"]
 date = "2025-08-16"
 +++
 
-{{< notice Tip >}} 
+{{< notice tip >}} 
 - GitHub project : [https://github.com/adrien1212/spring-mcp-demo](https://github.com/adrien1212/spring-mcp-demo)
 {{< /notice >}} 
 
