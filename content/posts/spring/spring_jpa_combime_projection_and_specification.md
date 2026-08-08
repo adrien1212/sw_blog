@@ -97,7 +97,7 @@ Hibernate:
 
 ## Combine Projection with Specification
 
-Since Spring Data JPA 3.x, `JpaSpecificationExecutor` exposes a fluent variant:
+Since Spring Data JPA 3.x, `JpaSpecificationExecutor` exposes a fluent variant introduced with the concept of [Query by Example](https://docs.spring.io/spring-data/commons/reference/query-by-example.html)
 
 ```java
 <S extends T, R> R findBy(Specification<T> spec, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction);
