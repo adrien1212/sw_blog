@@ -2,6 +2,7 @@
 title = "Create RAG with LangChain4j (no spring required)"
 series = ["AI"]
 date = "2026-11-06"
+math = true
 +++
 
 {{< notice tip >}} 
@@ -20,7 +21,9 @@ LLMs are impressive for general knowledge, but ask one about your internal docs,
 These are exactly the pieces we need for our RAG.
 
 ## RAG Architecture Overview
-### Ingestion
+Complementary resources about RAG Architecture [Code a simple RAG from scratch](https://huggingface.co/blog/ngxson/make-your-own-rag)
+
+### Indexing phase
 Everything starts with turning your raw documents into vectors that can be searched.
 
 {{<mermaid>}}
@@ -42,7 +45,7 @@ flowchart LR
 4. **Embed**: turn each chunk into a vector with an `EmbeddingModel`
 5. **Store**: save those vectors (along with the original text) into an `EmbeddingStore` — could be in-memory, PgVector, Chroma, Qdrant, whatever fits your setup
 
-### Retrieval
+### Retrieval phase
 When a user asks a question, we embed it with the *same* model we used for ingestion (this is important — vectors from different models can't be compared). Then we do a similarity search to find the most relevant chunks and inject them into the prompt.
 
 {{<mermaid>}}
@@ -65,7 +68,45 @@ When a user asks a question, we embed it with the *same* model we used for inges
 3. **Augment the prompt**: the `RetrievalAugmentor` injects the retrieved segments into the user message, along with any conversation history from `ChatMemory`
 4. **Generate**: the `ChatModel` (OpenAI, Ollama, Mistral…) produces an answer grounded in the retrieved context. The whole flow is driven by a simple Java interface via `AiServices`
 
-## Implement the ingestion step
+### What is an embedding?
+
+Both phases hinge on the same operation: turning text into a vector. It's worth being precise about what that means, because everything else follows from it.
+
+An **embedding model** takes a piece of text and returns a fixed-size list of numbers — a vector. `bge-m3` returns 1024 of them, always 1024, whether you feed it three words or three paragraphs:
+
+```java
+Response<Embedding> response = embeddingModel.embed("How do I reset my password?");
+Embedding embedding = response.content();
+
+System.out.println(embedding.dimension());        // 1024
+System.out.println(embedding.vector()[0]);        // -0.0213...
+```
+
+Those 1024 numbers are coordinates. Think of each vector as a point in a 1024-dimensional space where **texts with similar meaning land close to each other**. The important word is *meaning*, not *words*. These two sentences share almost no vocabulary:
+- "How do I reset my password?"
+- "I forgot my login credentials"
+
+yet they end up as near neighbours, because the model was trained on enough text to learn they're about the same thing. A *keyword search* scores them at nearly zero. That gap is the entire reason RAG uses embeddings instead of `LIKE '%password%'`. Closeness is measured with [**cosine similarity**](https://en.wikipedia.org/wiki/Cosine_similarity); the angle between two vectors, which ignores length and keeps only direction:
+
+$$
+\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}
+= \frac{\sum\limits_{i=1}^{n} A_i B_i}{\sqrt{\sum\limits_{i=1}^{n} A_i^2}\ \sqrt{\sum\limits_{i=1}^{n} B_i^2}}
+$$
+
+```java
+Embedding a = embeddingModel.embed("How do I reset my password?").content();
+Embedding b = embeddingModel.embed("I forgot my login credentials").content();
+Embedding c = embeddingModel.embed("The cafeteria closes at 6pm").content();
+
+CosineSimilarity.between(a, b);   // ~0.8 — same topic
+CosineSimilarity.between(a, c);   // ~0.1 — unrelated
+```
+
+{{< notice warning >}}
+Each model builds **its own** space. The axes of `bge-m3` have nothing to do with the axes of OpenAI's `text-embedding-3-small`, and the vectors may not even have the same number of dimensions. Measuring an angle between vectors from two different models is meaningless — you'll get a number, and that number tells you nothing. This is why ingestion and retrieval must share one `EmbeddingModel`.
+{{< /notice >}}
+
+## Implement the indexing phase
 
 Let's build the ingestion pipeline piece by piece.
 
