@@ -1,11 +1,11 @@
 +++
 title = "Spring MCP Server and Client"
-series = ["MCP, Spring"]
+series = ["AI, Spring"]
 date = "2025-08-16"
 +++
 
 {{< notice tip >}} 
-- GitHub project : [https://github.com/adrien1212/spring-mcp-demo](https://github.com/adrien1212/spring-mcp-demo)
+GitHub project : [https://github.com/adrien1212/spring-mcp-demo](https://github.com/adrien1212/spring-mcp-demo)
 {{< /notice >}} 
 
 ## Introduction
