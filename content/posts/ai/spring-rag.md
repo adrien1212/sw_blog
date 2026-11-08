@@ -1,5 +1,5 @@
 +++
-title = "Create RAG with LangChain4j (no spring required)"
+title = "Create RAG with Spring AI"
 series = ["Spring AI", "AI"]
 date = "2026-11-06"
 +++
