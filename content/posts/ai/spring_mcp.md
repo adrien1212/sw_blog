@@ -1,6 +1,6 @@
 +++
 title = "Spring MCP Server and Client"
-series = ["AI, Spring"]
+series = ["Spring AI"]
 date = "2025-08-16"
 +++
 
