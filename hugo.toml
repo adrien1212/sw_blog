@@ -1,6 +1,6 @@
 baseurl = "http://blog.adriencaubel.fr"
 title = "Adrien CAUBEL"
-theme = "coder"
+theme = "hugo-coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
