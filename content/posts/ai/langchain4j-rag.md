@@ -6,7 +6,7 @@ math = true
 +++
 
 {{< notice tip >}} 
-GitHub project : [https://github.com/adrien1212/rag-poc.git](https://github.com/adrien1212/rag-poc.git)
+GitHub project : [https://github.com/adrien1212/RAG-langchain4j-poc](https://github.com/adrien1212/RAG-langchain4j-poc)
 {{< /notice >}} 
 
 LLMs are impressive for general knowledge, but ask one about your internal docs, your contracts or your product catalog and it'll confidently make things up. That's where **RAG (Retrieval-Augmented Generation)** comes in: instead of hoping the model knows the answer, you fetch the relevant pieces from your own documents and feed them as context. The model then answers based on *your* data, not its training set.
